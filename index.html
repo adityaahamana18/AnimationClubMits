@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Club | MITS Gwalior — We Don't Just Imagine. We Animate.</title>
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Animation Club | MITS Gwalior">
+  <meta name="description" content="A creative playground for animators, designers, editors, storytellers, and digital creators at Madhav Institute of Technology & Science (MITS), Gwalior.">
+  <meta name="keywords" content="Animation Club, MITS Gwalior, 2D Animation, 3D Animation, Blender, Motion Graphics, Graphic Design, Video Editing, Student Creative Community">
+  <meta name="author" content="Animation Club MITS Gwalior">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Animation Club | MITS Gwalior">
+  <meta property="og:description" content="We Don't Just Imagine. We Animate. Official website of the student-led Animation Club at MITS Gwalior.">
+
+  <!-- Google Fonts: Clash Display, Plus Jakarta Sans, Space Mono, Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700,800&display=swap" rel="stylesheet">
+
+  <!-- Three.js (WebGL 3D Engine CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP & ScrollTrigger (Cinematic Animation CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Ambient Animated Background Glow Blobs -->
+  <div class="bg-ambient-blob blob-1" aria-hidden="true"></div>
+  <div class="bg-ambient-blob blob-2" aria-hidden="true"></div>
+  <div class="bg-ambient-blob blob-3" aria-hidden="true"></div>
+
+  <!-- Custom Interactive Cursor (Desktop) -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" id="customCursorDot" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       SECTION A: NAVIGATION BAR
+       ========================================================================== -->
+  <header class="studio-navbar" id="navbar">
+    <div class="site-container nav-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo magnetic-target" aria-label="Animation Club MITS Gwalior Home">
+        <div class="brand-icon-box">
+          <i data-lucide="play" style="fill: white; width: 18px; height: 18px;"></i>
+        </div>
+        <div class="brand-text-block">
+          <span>ANIMATION<span style="color: var(--accent-orange);">.CLUB</span></span>
+          <span class="brand-sub">MITS Gwalior</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-desktop">
+          <li><a href="index.html" class="nav-link-item active">Home</a></li>
+          <li><a href="about.html" class="nav-link-item">About</a></li>
+          <li><a href="domains.html" class="nav-link-item">Creative Domains</a></li>
+          <li><a href="events.html" class="nav-link-item">Events</a></li>
+          <li><a href="gallery.html" class="nav-link-item">Gallery</a></li>
+          <li><a href="team.html" class="nav-link-item">Team</a></li>
+          <li><a href="contact.html" class="nav-link-item">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- CTA & Mobile Trigger -->
+      <div class="nav-actions">
+        <a href="contact.html#join" class="btn-studio btn-orange-studio nav-cta-btn magnetic-target" id="navJoinBtn">
+          <span>Join the Club</span>
+          <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Fullscreen Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link"><span>Home</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="about.html" class="mobile-nav-link"><span>About Club</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="domains.html" class="mobile-nav-link"><span>Creative Domains</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="events.html" class="mobile-nav-link"><span>Events & Jams</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="gallery.html" class="mobile-nav-link"><span>Creative Gallery</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="team.html" class="mobile-nav-link"><span>Meet the Team</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><span>Contact & Join</span> <i data-lucide="arrow-right"></i></a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">MITS GWALIOR CREATIVE COMMUNITY</div>
+      <a href="contact.html#join" class="btn-studio btn-primary-studio" style="width: 100%;">Apply for Recruitment</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION B: HERO SECTION (WITH THREE.JS 3D CANVAS)
+         ========================================================================== -->
+    <section class="hero-section" id="home">
+      <!-- 3D Three.js WebGL Floating Geometry Canvas -->
+      <canvas id="threeHeroCanvas"></canvas>
+      <div class="hero-grid-pattern"></div>
+      
+      <div class="site-container hero-content">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center;" class="hero-main-grid">
+          
+          <div class="reveal">
+            <!-- Label Badge -->
+            <div class="hero-label-wrap">
+              <span class="pulsing-dot"></span>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">
+                A Student Creative Community | MITS Gwalior
+              </span>
+            </div>
+
+            <!-- Kinetic Headline with Glitch Effect -->
+            <h1 class="hero-headline">
+              WE DON'T JUST <br>
+              IMAGINE. <br>
+              WE <span class="glitch-text" data-text="ANIMATE">ANIMATE</span><span class="highlight-orange">.</span>
+            </h1>
+
+            <!-- Supporting Subtext -->
+            <p class="hero-subtext">
+              A creative playground for animators, designers, editors, storytellers, and digital creators at Madhav Institute of Technology & Science, Gwalior.
+            </p>
+
+            <!-- Action Buttons with Magnetic Tracking -->
+            <div class="hero-cta-group">
+              <a href="gallery.html" class="btn-studio btn-primary-studio magnetic-target">
+                <span>Explore Our Work</span>
+                <i data-lucide="arrow-right"></i>
+              </a>
+              <a href="events.html" class="btn-studio btn-outline-studio magnetic-target">
+                <i data-lucide="calendar"></i>
+                <span>Upcoming Events</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 3D Physics Tilt Creative Visual Composition -->
+          <div class="hero-visual-col reveal" style="transition-delay: 150ms;">
+            <div class="hero-composition">
+              
+              <!-- Floating Creative Badges -->
+              <div class="floating-element float-badge-1">
+                <div class="floating-pill">
+                  <i data-lucide="zap" style="color: var(--accent-orange); width: 20px; height: 20px;"></i>
+                  <span>24 FPS Kinematics</span>
+                </div>
+              </div>
+
+              <div class="floating-element float-badge-2">
+                <div class="floating-pill">
+                  <i data-lucide="box" style="color: var(--accent-purple); width: 20px; height: 20px;"></i>
+                  <span>Blender 3D & VFX</span>
+                </div>
+              </div>
+
+              <div class="floating-element float-badge-3">
+                <div class="floating-pill">
+                  <i data-lucide="sparkles" style="color: var(--accent-pink); width: 20px; height: 20px;"></i>
+                  <span>FRAME SHIFT 2026</span>
+                </div>
+              </div>
+
+              <!-- Central Canvas Card -->
+              <div class="art-canvas-card">
+                <div class="art-canvas-header">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-main); font-weight: 800;">viewport_render.mp4</span>
+                  <i data-lucide="layers" style="width: 15px; height: 15px; color: var(--accent-orange);"></i>
+                </div>
+                <div class="art-canvas-body">
+                  <div class="interactive-animation-frame">
+                    <div class="anim-portal">
+                      <div class="anim-portal-inner">
+                        <span class="portal-fps">60 FPS REALTIME</span>
+                        <span class="portal-title">MITS CREATIVE</span>
+                        <i data-lucide="play-circle" style="width: 32px; height: 32px; margin-top: 8px; color: var(--accent-orange);"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Stats Strip -->
+        <div class="hero-stats-strip reveal" style="transition-delay: 250ms;">
+          <div class="stat-item">
+            <div class="stat-num">10<span>+</span></div>
+            <div class="stat-label">Creative Domains</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">50<span>+</span></div>
+            <div class="stat-label">Active Creators</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24<span>FPS</span></div>
+            <div class="stat-label">Fluid Storytelling</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Student-Driven Power</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INFINITE CREATIVE MARQUEE TICKER (DUAL CONTRAST ROWS)
+         ========================================================================== -->
+    <div class="marquee-container-wrap" aria-hidden="true">
+      <div class="marquee-ticker-section">
+        <div class="marquee-track">
+          <span class="marquee-item">2D Character Acting <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">3D Blender Environments <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Dynamic Kinetic Type <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Viral Campus Memes <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Sound Design & Foley <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Frame Shift Flagship <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Generative Code & WebGL <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">MITS Gwalior Community <span class="marquee-star">✦</span></span>
+          <!-- Seamless Loop -->
+          <span class="marquee-item">2D Character Acting <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">3D Blender Environments <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Dynamic Kinetic Type <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Viral Campus Memes <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Sound Design & Foley <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Frame Shift Flagship <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">Generative Code & WebGL <span class="marquee-star">✦</span></span>
+          <span class="marquee-item">MITS Gwalior Community <span class="marquee-star">✦</span></span>
+        </div>
+      </div>
+      <div class="marquee-ticker-section reverse">
+        <div class="marquee-track reverse-anim">
+          <span class="marquee-item">Storyboarding <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Keyframe Animation <span class="marquee-star">★</span></span>
+          <span class="marquee-item">DaVinci Color Grading <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Stylized Anime Cuts <span class="marquee-star">★</span></span>
+          <span class="marquee-item">After Effects VFX <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Brutalist Graphic Posters <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Audio React Loops <span class="marquee-star">★</span></span>
+          <!-- Seamless Loop -->
+          <span class="marquee-item">Storyboarding <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Keyframe Animation <span class="marquee-star">★</span></span>
+          <span class="marquee-item">DaVinci Color Grading <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Stylized Anime Cuts <span class="marquee-star">★</span></span>
+          <span class="marquee-item">After Effects VFX <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Brutalist Graphic Posters <span class="marquee-star">★</span></span>
+          <span class="marquee-item">Audio React Loops <span class="marquee-star">★</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SECTION C: ABOUT THE CLUB
+         ========================================================================== -->
+    <section class="about-section" id="about">
+      <div class="site-container">
+        
+        <div class="about-grid">
+          
+          <div class="reveal">
+            <div class="section-label">Manifesto & Philosophy</div>
+            <h2 class="section-title">Creativity Has No Frame.</h2>
+            <p class="about-manifesto">
+              We are a collective of digital painters, 3D worldbuilders, kinetic typographers, and meme conspirators at Madhav Institute of Technology & Science, Gwalior.
+            </p>
+            <p style="margin-bottom: 2rem;">
+              The Animation Club is a student-driven incubator where imagination meets modern creative technology. Whether you're drawing your very first keyframe, tweaking complex shader nodes in Blender, or timing high-energy video edits for social feeds, you have a room full of peers ready to collaborate.
+            </p>
+
+            <div class="about-features-list">
+              <div class="about-feature-box magnetic-target">
+                <div class="feature-icon-wrapper">
+                  <i data-lucide="pen-tool"></i>
+                </div>
+                <h3 class="about-feature-title">Learn by Creating</h3>
+                <p class="about-feature-desc">Skip dry lectures. We build original shorts, experimental loops, and visual projects from day one.</p>
+              </div>
+
+              <div class="about-feature-box magnetic-target">
+                <div class="feature-icon-wrapper orange">
+                  <i data-lucide="users"></i>
+                </div>
+                <h3 class="about-feature-title">Collaborate Across Disciplines</h3>
+                <p class="about-feature-desc">Pair with scriptwriters, sound designers, 3D modelers, and video editors to create unified masterpieces.</p>
+              </div>
+
+              <div class="about-feature-box magnetic-target">
+                <div class="feature-icon-wrapper orange">
+                  <i data-lucide="cpu"></i>
+                </div>
+                <h3 class="about-feature-title">Emerging Tech & Generative</h3>
+                <p class="about-feature-desc">Explore Three.js web graphics, AI-assisted workflows, TouchDesigner simulations, and interactive canvas tools.</p>
+              </div>
+
+              <div class="about-feature-box magnetic-target">
+                <div class="feature-icon-wrapper">
+                  <i data-lucide="trophy"></i>
+                </div>
+                <h3 class="about-feature-title">Showcase & Compete</h3>
+                <p class="about-feature-desc">Publish to curated club galleries, participate in national animation fests, and build industry-grade portfolios.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 2.5rem;">
+              <a href="about.html" class="btn-studio btn-primary-studio magnetic-target">
+                <span>Explore Full About Page</span>
+                <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Visual Quote Box -->
+          <div class="reveal" style="transition-delay: 200ms;">
+            <div class="about-visual-card">
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <span class="badge-tag purple">MITS GWALIOR</span>
+                <span class="badge-tag orange">STUDENT CELL</span>
+              </div>
+              <blockquote class="quote-highlight">
+                “Every great animator began with a crooked line on a notebook corner. We provide the ecosystem to turn that spark into cinema.”
+              </blockquote>
+              <div class="quote-author-info">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--text-main); color: white; display:flex; align-items:center; justify-content:center; font-weight:800; font-family:var(--font-mono); border: 2px solid var(--accent-orange);">
+                  AC
+                </div>
+                <div>
+                  <div style="font-weight: 800; font-family: var(--font-display); font-size: 1.05rem;">Animation Club Core</div>
+                  <div style="font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono);">Madhav Institute of Technology & Science</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION D: CREATIVE DOMAINS
+         ========================================================================== -->
+    <section class="domains-section" id="domains">
+      <div class="site-container">
+        
+        <div class="section-header reveal">
+          <div class="section-label">Where We Specialize</div>
+          <h2 class="section-title">10 Creative Domains to Master</h2>
+          <p class="section-subtitle">
+            From classic keyframing and brutalist layout design to real-time 3D pipelines and viral internet culture. Hover and interact with each domain below.
+          </p>
+        </div>
+
+        <!-- Domains Grid rendered dynamically from data.js -->
+        <div class="domains-grid" id="domainsGrid">
+          <!-- Injected via script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
+          <a href="domains.html" class="btn-studio btn-orange-studio magnetic-target" style="padding: 1rem 2.5rem;">
+            <span>Explore All Domain Toolstacks</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION E: EVENTS & WORKSHOPS
+         ========================================================================== -->
+    <section class="events-section" id="events">
+      <div class="site-container">
+        
+        <div class="section-header reveal">
+          <div class="section-label">Calendar & Experiences</div>
+          <h2 class="section-title">Events, Workshops & Jams</h2>
+          <p class="section-subtitle">
+            Hands-on bootcamps, high-stakes creative challenges, lo-fi jam sessions, and community meetups at MITS Gwalior.
+          </p>
+        </div>
+
+        <!-- Event Filter Tabs -->
+        <div class="event-tabs reveal">
+          <button class="tab-btn event-tab-btn active magnetic-target" data-event-filter="all">All Events</button>
+          <button class="tab-btn event-tab-btn magnetic-target" data-event-filter="upcoming">Upcoming Sessions</button>
+          <button class="tab-btn event-tab-btn magnetic-target" data-event-filter="past">Completed Highlights</button>
+        </div>
+
+        <!-- Events Container rendered from data.js -->
+        <div class="events-container" id="eventsContainer">
+          <!-- Injected via script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
+          <a href="events.html" class="btn-studio btn-primary-studio magnetic-target" style="padding: 1rem 2.5rem;">
+            <span>View Event FAQs & Calendar</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION F: CREATIVE GALLERY
+         ========================================================================== -->
+    <section class="gallery-section" id="gallery">
+      <div class="site-container">
+        
+        <div class="section-header reveal">
+          <div class="section-label">Portfolio & Archive</div>
+          <h2 class="section-title">The Creative Vault</h2>
+          <p class="section-subtitle">
+            An asymmetric showcase of motion typography, 3D character rigs, brutalist posters, video edits, and campus memes crafted by club members.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="gallery-filters reveal">
+          <button class="filter-pill gallery-filter-btn active magnetic-target" data-filter="all">All Disciplines</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="motion">Motion Graphics</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="3d">3D Animation</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="2d">2D Animation</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="posters">Posters & Design</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="edits">Video Edits</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="memes">Memes & Pop</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="art">Digital Art</button>
+        </div>
+
+        <!-- Asymmetric Masonry Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Injected via script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
+          <a href="gallery.html" class="btn-studio btn-orange-studio magnetic-target" style="padding: 1rem 2.5rem;">
+            <span>Open Dedicated Gallery Page</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Artwork Preview">
+      <div class="lightbox-content-box">
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close dialog">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="lightbox-body">
+          <div class="lightbox-stage" id="lightboxStage">
+            <!-- Dynamic Artwork -->
+          </div>
+          <div class="lightbox-details">
+            <div>
+              <span class="badge-tag purple" id="lightboxBadge" style="margin-bottom: 1rem; display:inline-block;">Domain</span>
+              <h3 id="lightboxTitle" style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.5rem;">Title</h3>
+              <div id="lightboxCreator" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-orange); margin-bottom: 1.25rem;">Creator</div>
+              <p id="lightboxDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Description</p>
+            </div>
+            <div style="padding-top: 1.5rem; border-top: 2px dashed var(--border-medium); display: flex; align-items:center; justify-content: space-between;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-light); font-weight: bold;">MITS Animation Club Showcase</span>
+              <button class="btn-studio btn-outline-studio" style="padding: 0.5rem 1.2rem; font-size: 0.88rem;" onclick="document.getElementById('lightboxCloseBtn').click()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SECTION G: MEET THE TEAM
+         ========================================================================== -->
+    <section class="team-section" id="team">
+      <div class="site-container">
+        
+        <div class="section-header reveal">
+          <div class="section-label">Leadership & Coordinators</div>
+          <h2 class="section-title">Meet the Creative Crew</h2>
+          <p class="section-subtitle">
+            The passionate students and faculty mentors behind Animation Club, MITS Gwalior.
+          </p>
+        </div>
+
+        <div class="team-grid" id="teamGrid" style="display: block;">
+          <!-- Injected via script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
+          <a href="team.html" class="btn-studio btn-primary-studio magnetic-target" style="padding: 1rem 2.5rem;">
+            <span>Meet All Leads & Mentors</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION H: JOIN THE CLUB
+         ========================================================================== -->
+    <section class="join-section" id="join">
+      <div class="site-container">
+        
+        <div class="join-banner-box reveal">
+          <div class="join-content-wrap">
+            <div class="join-badge">
+              <i data-lucide="flame" style="width: 15px; height: 15px; color: var(--accent-orange);"></i>
+              <span>Recruitment Portal • MITS Gwalior</span>
+            </div>
+
+            <h2 class="join-headline">YOUR IDEAS BELONG HERE.</h2>
+
+            <p class="join-subtext">
+              Whether you're a seasoned animator, a meme connoisseur, a curious coder exploring WebGL, or an aspiring video editor picking up keyframes for the first time — find your crew and level up.
+            </p>
+
+            <!-- Domain Pill Chips -->
+            <div class="join-domains-pill-row">
+              <span class="join-domain-chip">2D Animation</span>
+              <span class="join-domain-chip">3D & Blender</span>
+              <span class="join-domain-chip">Video Editing</span>
+              <span class="join-domain-chip">Motion Graphics</span>
+              <span class="join-domain-chip">Graphic Design</span>
+              <span class="join-domain-chip">Digital Art</span>
+              <span class="join-domain-chip">Memes</span>
+              <span class="join-domain-chip">Event Hosting</span>
+            </div>
+
+            <!-- Join Actions -->
+            <div class="join-actions-row">
+              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="btn-studio btn-orange-studio magnetic-target" id="joinRecruitmentBtn" style="font-size: 1.1rem; padding: 1.1rem 2.4rem;">
+                <span>Join / Recruitment Form</span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-studio btn-outline-studio social-link-instagram magnetic-target" style="color: #fff; border-color: rgba(255,255,255,0.4); font-size: 1.1rem; padding: 1.1rem 2.2rem;">
+                <i data-lucide="instagram"></i>
+                <span>Follow on Instagram</span>
+              </a>
+            </div>
+
+            <div class="recruitment-status-notice" id="recruitmentStatusNotice">
+              <!-- Dynamically populated based on CLUB_CONFIG.recruitment.isOpen -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION I: CONTACT SECTION
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="site-container">
+        
+        <div class="contact-grid">
+          
+          <!-- Contact Info Box -->
+          <div class="contact-card-box reveal">
+            <div class="section-label">Get in Touch</div>
+            <h2 style="font-size: 2.4rem; font-weight: 800; margin-bottom: 1rem;">Let's Connect & Collaborate.</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">
+              Have questions about upcoming workshops, event sponsorships, or how to get involved? Send us a direct line.
+            </p>
+
+            <div class="contact-info-list">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div>
+                  <strong style="font-family: var(--font-display); font-size: 1.05rem;">Campus Location</strong>
+                  <p style="font-size: 0.95rem; margin-top: 0.2rem;">Madhav Institute of Technology & Science (MITS), Racecourse Road, Gwalior, MP - 474005</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="mail"></i>
+                </div>
+                <div>
+                  <strong style="font-family: var(--font-display); font-size: 1.05rem;">Direct Club Email</strong>
+                  <p style="font-size: 0.95rem; margin-top: 0.2rem;"><a href="mailto:animationclub@mitsgwalior.in" class="social-link-email" style="text-decoration: underline; color: var(--accent-purple); font-weight: 700;">animationclub@mitsgwalior.in</a></p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="instagram"></i>
+                </div>
+                <div>
+                  <strong style="font-family: var(--font-display); font-size: 1.05rem;">Instagram Community</strong>
+                  <p style="font-size: 0.95rem; margin-top: 0.2rem;">Follow <a href="https://instagram.com" class="social-link-instagram" target="_blank" rel="noopener" style="color: var(--accent-orange); font-weight: 700;">@animationclub_mits</a> for updates & reels.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form with Verified Mailto Dispatch -->
+          <div class="contact-form-box reveal" style="transition-delay: 150ms;">
+            <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">Send a Message</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.75rem;">
+              Direct inquiry dispatch. Validated input connects directly with club leads.
+            </p>
+
+            <form id="clubContactForm" novalidate>
+              <div class="form-group">
+                <label for="contactName" class="form-label">Your Full Name *</label>
+                <input type="text" id="contactName" class="form-control-studio" placeholder="e.g. Alex Sharma" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address *</label>
+                <input type="email" id="contactEmail" class="form-control-studio" placeholder="e.g. alex@mitsgwalior.in" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactDomain" class="form-label">Domain of Interest / Reason for Contact</label>
+                <select id="contactDomain" class="form-control-studio">
+                  <option value="General Query">General Query</option>
+                  <option value="2D Animation">2D Animation</option>
+                  <option value="3D Animation / Blender">3D Animation / Blender</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Motion Graphics">Motion Graphics</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="Event Sponsorship / Collaboration">Event Sponsorship / Collaboration</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Your Message *</label>
+                <textarea id="contactMessage" class="form-control-studio" rows="4" placeholder="Tell us how we can help or what you'd like to collaborate on..." required></textarea>
+              </div>
+
+              <div id="formStatusMessage" style="margin-bottom: 1.25rem; font-size: 0.9rem;"></div>
+
+              <button type="submit" class="btn-studio btn-primary-studio magnetic-target" style="width: 100%;">
+                <span>Send Query to Animation Club</span>
+                <i data-lucide="send"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SECTION J: FOOTER
+       ========================================================================== -->
+  <footer class="studio-footer">
+    <div class="site-container">
+      
+      <div class="footer-top-grid">
+        <!-- Col 1: About & Info -->
+        <div>
+          <a href="index.html" class="brand-logo magnetic-target" style="color: #ffffff; margin-bottom: 1rem;">
+            <div class="brand-icon-box">
+              <i data-lucide="play" style="fill: white; width: 18px; height: 18px;"></i>
+            </div>
+            <div class="brand-text-block">
+              <span style="color:#ffffff;">ANIMATION<span style="color: var(--accent-orange);">.CLUB</span></span>
+              <span class="brand-sub" style="color: #ff9e7d;">MITS GWALIOR</span>
+            </div>
+          </a>
+          <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6; max-width: 320px;">
+            A student-led creative community fostering digital art, 2D/3D animation, motion graphics, video editing, and visual experiments at MITS Gwalior.
+          </p>
+          <div class="footer-social-cluster">
+            <a href="https://instagram.com" class="footer-social-icon social-link-instagram magnetic-target" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="https://linkedin.com" class="footer-social-icon social-link-linkedin magnetic-target" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="https://youtube.com" class="footer-social-icon social-link-youtube magnetic-target" target="_blank" rel="noopener" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            <a href="https://discord.gg" class="footer-social-icon social-link-discord magnetic-target" target="_blank" rel="noopener" aria-label="Discord"><i data-lucide="message-square"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About the Club</a></li>
+            <li><a href="domains.html">Creative Domains</a></li>
+            <li><a href="events.html">Events & Workshops</a></li>
+            <li><a href="gallery.html">Creative Gallery</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Domains -->
+        <div>
+          <h4 class="footer-col-title">Domains</h4>
+          <ul class="footer-nav-list">
+            <li><a href="domains.html">2D / 3D Animation</a></li>
+            <li><a href="domains.html">Motion Graphics</a></li>
+            <li><a href="domains.html">Video Editing</a></li>
+            <li><a href="domains.html">Digital Art & Design</a></li>
+            <li><a href="domains.html">Creative Technology</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Community & Contact -->
+        <div>
+          <h4 class="footer-col-title">Get Involved</h4>
+          <ul class="footer-nav-list">
+            <li><a href="contact.html#join">Recruitment Portal</a></li>
+            <li><a href="events.html">Flagship: FRAME SHIFT</a></li>
+            <li><a href="team.html">Leadership & Mentors</a></li>
+            <li><a href="contact.html">Contact Coordinators</a></li>
+            <li><a href="mailto:animationclub@mitsgwalior.in" class="social-link-email">animationclub@mitsgwalior.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; <span id="currentYear">2026</span> Animation Club, Madhav Institute of Technology & Science (MITS), Gwalior. All rights reserved.
+        </div>
+        <button class="back-to-top-btn magnetic-target" id="backToTopBtn" aria-label="Back to top">
+          <span>Back to Top</span>
+          <i data-lucide="arrow-up" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Centralized Club Data Store -->
+  <script src="js/data.js"></script>
+
+  <!-- Interactive JavaScript Engine -->
+  <script src="js/script.js"></script>
+</body>
+</html>

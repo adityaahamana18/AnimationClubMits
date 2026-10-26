@@ -1,0 +1,12 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7928CA" />
+      <stop offset="100%" stop-color="#FF5500" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="url(#logoGrad)" />
+  <polygon points="46,35 88,60 46,85" fill="#ffffff" />
+  <circle cx="88" cy="35" r="8" fill="#FFB703" />
+</svg>
+

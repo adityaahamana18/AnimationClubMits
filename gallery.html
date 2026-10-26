@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Gallery | Animation Club MITS Gwalior</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700,800&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-gallery">
+
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  <div class="bg-ambient-blob blob-1"></div>
+  <div class="bg-ambient-blob blob-2"></div>
+  <div class="bg-ambient-blob blob-3"></div>
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Navbar -->
+  <header class="studio-navbar" id="navbar">
+    <div class="site-container nav-inner">
+      <a href="index.html" class="brand-logo magnetic-target">
+        <div class="brand-icon-box">
+          <i data-lucide="play" style="fill: white; width: 18px; height: 18px;"></i>
+        </div>
+        <div class="brand-text-block">
+          <span>ANIMATION<span style="color: var(--accent-orange);">.CLUB</span></span>
+          <span class="brand-sub">MITS Gwalior</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-desktop">
+          <li><a href="index.html" class="nav-link-item">Home</a></li>
+          <li><a href="about.html" class="nav-link-item">About</a></li>
+          <li><a href="domains.html" class="nav-link-item">Creative Domains</a></li>
+          <li><a href="events.html" class="nav-link-item">Events</a></li>
+          <li><a href="gallery.html" class="nav-link-item active">Gallery</a></li>
+          <li><a href="team.html" class="nav-link-item">Team</a></li>
+          <li><a href="contact.html" class="nav-link-item">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html#join" class="btn-studio btn-orange-studio nav-cta-btn magnetic-target">
+          <span>Join the Club</span>
+          <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link"><span>Home</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="about.html" class="mobile-nav-link"><span>About Club</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="domains.html" class="mobile-nav-link"><span>Creative Domains</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="events.html" class="mobile-nav-link"><span>Events & Jams</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="gallery.html" class="mobile-nav-link"><span>Creative Gallery</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="team.html" class="mobile-nav-link"><span>Meet the Team</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><span>Contact & Join</span> <i data-lucide="arrow-right"></i></a></li>
+    </ul>
+  </div>
+
+  <main>
+    <!-- Page Hero Banner -->
+    <section class="page-hero-banner">
+      <div class="site-container">
+        <div class="page-hero-badge reveal">
+          <i data-lucide="image" style="color: var(--accent-orange); width: 16px; height: 16px;"></i>
+          <span>PORTFOLIO &amp; ARCHIVE</span>
+        </div>
+        <h1 class="page-hero-title reveal">CREATIVE <br><span class="highlight-purple glitch-text" data-text="GALLERY">GALLERY</span><span class="highlight-orange">.</span></h1>
+        <p class="page-hero-desc reveal">
+          An interactive, asymmetric showcase of 3D loops, fluid 2D keyframe cuts, motion graphics, brutalist typography posters, and student meme culture.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery & Filter Grid -->
+    <section class="gallery-page-section">
+      <div class="site-container">
+        <!-- Category Filters -->
+        <div class="gallery-filters reveal">
+          <button class="filter-pill gallery-filter-btn active magnetic-target" data-filter="all">All Disciplines</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="motion">Motion Graphics</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="3d">3D Animation</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="2d">2D Animation</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="posters">Posters &amp; Design</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="edits">Video Edits</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="memes">Memes &amp; Pop</button>
+          <button class="filter-pill gallery-filter-btn magnetic-target" data-filter="art">Digital Art</button>
+        </div>
+
+        <!-- Asymmetric Masonry Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Dynamically populated from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Artwork Preview">
+      <div class="lightbox-content-box">
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close dialog">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="lightbox-body">
+          <div class="lightbox-stage" id="lightboxStage"></div>
+          <div class="lightbox-details">
+            <div>
+              <span class="badge-tag purple" id="lightboxBadge" style="margin-bottom: 1rem; display:inline-block;">Domain</span>
+              <h3 id="lightboxTitle" style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.5rem;">Title</h3>
+              <div id="lightboxCreator" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-orange); margin-bottom: 1.25rem;">Creator</div>
+              <p id="lightboxDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Description</p>
+            </div>
+            <div style="padding-top: 1.5rem; border-top: 2px dashed var(--border-medium); display: flex; align-items:center; justify-content: space-between;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-light); font-weight: bold;">MITS Animation Club Showcase</span>
+              <button class="btn-studio btn-outline-studio" style="padding: 0.5rem 1.2rem; font-size: 0.88rem;" onclick="document.getElementById('lightboxCloseBtn').click()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="studio-footer">
+    <div class="site-container">
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Animation Club, Madhav Institute of Technology &amp; Science (MITS), Gwalior.
+        </div>
+        <button class="back-to-top-btn magnetic-target" id="backToTopBtn">
+          <span>Back to Top</span>
+          <i data-lucide="arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+

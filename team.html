@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet the Team | Animation Club MITS Gwalior</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700,800&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-team">
+
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  <div class="bg-ambient-blob blob-1"></div>
+  <div class="bg-ambient-blob blob-2"></div>
+  <div class="bg-ambient-blob blob-3"></div>
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Navbar -->
+  <header class="studio-navbar" id="navbar">
+    <div class="site-container nav-inner">
+      <a href="index.html" class="brand-logo magnetic-target">
+        <div class="brand-icon-box">
+          <i data-lucide="play" style="fill: white; width: 18px; height: 18px;"></i>
+        </div>
+        <div class="brand-text-block">
+          <span>ANIMATION<span style="color: var(--accent-orange);">.CLUB</span></span>
+          <span class="brand-sub">MITS Gwalior</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-desktop">
+          <li><a href="index.html" class="nav-link-item">Home</a></li>
+          <li><a href="about.html" class="nav-link-item">About</a></li>
+          <li><a href="domains.html" class="nav-link-item">Creative Domains</a></li>
+          <li><a href="events.html" class="nav-link-item">Events</a></li>
+          <li><a href="gallery.html" class="nav-link-item">Gallery</a></li>
+          <li><a href="team.html" class="nav-link-item active">Team</a></li>
+          <li><a href="contact.html" class="nav-link-item">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html#join" class="btn-studio btn-orange-studio nav-cta-btn magnetic-target">
+          <span>Join the Club</span>
+          <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link"><span>Home</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="about.html" class="mobile-nav-link"><span>About Club</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="domains.html" class="mobile-nav-link"><span>Creative Domains</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="events.html" class="mobile-nav-link"><span>Events & Jams</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="gallery.html" class="mobile-nav-link"><span>Creative Gallery</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="team.html" class="mobile-nav-link"><span>Meet the Team</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><span>Contact & Join</span> <i data-lucide="arrow-right"></i></a></li>
+    </ul>
+  </div>
+
+  <main>
+    <!-- Page Hero Banner -->
+    <section class="page-hero-banner">
+      <div class="site-container">
+        <div class="page-hero-badge reveal">
+          <i data-lucide="users" style="color: var(--accent-orange); width: 16px; height: 16px;"></i>
+          <span>LEADERSHIP &amp; FACULTY COORDINATORS</span>
+        </div>
+        <h1 class="page-hero-title reveal">MEET THE <br><span class="highlight-purple glitch-text" data-text="CREATIVE CREW">CREATIVE CREW</span><span class="highlight-orange">.</span></h1>
+        <p class="page-hero-desc reveal">
+          The visionaries, animators, coordinators, and mentors steering Animation Club MITS Gwalior toward award-winning heights.
+        </p>
+      </div>
+    </section>
+
+    <!-- Full Team Grid with Categorized Subgroups (Faculty Coordinators FIRST, then President, Vice Presidents, Core Team) -->
+    <section class="team-page-section" style="padding-top: 5rem;">
+      <div class="site-container">
+        <div class="section-header reveal">
+          <div class="section-label">ORGANIZATIONAL HIERARCHY</div>
+          <h2 class="section-title">Faculty Mentors &amp; Student Leaders</h2>
+          <p class="section-subtitle">
+            Meet the faculty advisors guiding our vision, followed by student leadership and core domain coordinators.
+          </p>
+        </div>
+
+        <div class="team-grid" id="teamGrid" style="display: block;">
+          <!-- Dynamically populated from data.js (Faculty Coordinators first, then President, VPs, Secretary, Treasurers, Promotions, Graphic Designers) -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Join the Team CTA -->
+    <section class="join-strip-section reveal">
+      <div class="site-container">
+        <div class="join-banner-box">
+          <div class="join-content-wrap">
+            <h2 class="join-headline">WANT TO LEAD A DOMAIN?</h2>
+            <p class="join-subtext">Core committee and lead coordinator selections open during annual recruitment windows.</p>
+            <a href="contact.html#join" class="btn-studio btn-orange-studio magnetic-target" style="padding: 1.1rem 2.5rem;">
+              <span>Get in Touch with Leads</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="studio-footer">
+    <div class="site-container">
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Animation Club, Madhav Institute of Technology &amp; Science (MITS), Gwalior.
+        </div>
+        <button class="back-to-top-btn magnetic-target" id="backToTopBtn">
+          <span>Back to Top</span>
+          <i data-lucide="arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+

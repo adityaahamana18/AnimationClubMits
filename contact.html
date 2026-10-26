@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Join | Animation Club MITS Gwalior</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700,800&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-contact">
+
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  <div class="bg-ambient-blob blob-1"></div>
+  <div class="bg-ambient-blob blob-2"></div>
+  <div class="bg-ambient-blob blob-3"></div>
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Navbar -->
+  <header class="studio-navbar" id="navbar">
+    <div class="site-container nav-inner">
+      <a href="index.html" class="brand-logo magnetic-target">
+        <div class="brand-icon-box">
+          <i data-lucide="play" style="fill: white; width: 18px; height: 18px;"></i>
+        </div>
+        <div class="brand-text-block">
+          <span>ANIMATION<span style="color: var(--accent-orange);">.CLUB</span></span>
+          <span class="brand-sub">MITS Gwalior</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-desktop">
+          <li><a href="index.html" class="nav-link-item">Home</a></li>
+          <li><a href="about.html" class="nav-link-item">About</a></li>
+          <li><a href="domains.html" class="nav-link-item">Creative Domains</a></li>
+          <li><a href="events.html" class="nav-link-item">Events</a></li>
+          <li><a href="gallery.html" class="nav-link-item">Gallery</a></li>
+          <li><a href="team.html" class="nav-link-item">Team</a></li>
+          <li><a href="contact.html" class="nav-link-item active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#join" class="btn-studio btn-orange-studio nav-cta-btn magnetic-target">
+          <span>Join the Club</span>
+          <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link"><span>Home</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="about.html" class="mobile-nav-link"><span>About Club</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="domains.html" class="mobile-nav-link"><span>Creative Domains</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="events.html" class="mobile-nav-link"><span>Events & Jams</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="gallery.html" class="mobile-nav-link"><span>Creative Gallery</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="team.html" class="mobile-nav-link"><span>Meet the Team</span> <i data-lucide="arrow-right"></i></a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><span>Contact & Join</span> <i data-lucide="arrow-right"></i></a></li>
+    </ul>
+  </div>
+
+  <main>
+    <!-- Page Hero Banner -->
+    <section class="page-hero-banner">
+      <div class="site-container">
+        <div class="page-hero-badge reveal">
+          <i data-lucide="send" style="color: var(--accent-orange); width: 16px; height: 16px;"></i>
+          <span>RECRUITMENT &amp; DIRECT CONNECT</span>
+        </div>
+        <h1 class="page-hero-title reveal">CONNECT &amp; <br><span class="highlight-purple glitch-text" data-text="COLLABORATE">COLLABORATE</span><span class="highlight-orange">.</span></h1>
+        <p class="page-hero-desc reveal">
+          Whether you want to audition for club recruitment, propose a creative workshop collaboration, or sponsor our fests — reach out right here.
+        </p>
+      </div>
+    </section>
+
+    <!-- Join Recruitment Spotlight Banner -->
+    <section class="join-page-spotlight" id="join">
+      <div class="site-container">
+        <div class="join-banner-box reveal">
+          <div class="join-content-wrap">
+            <div class="join-badge">
+              <i data-lucide="flame" style="width: 15px; height: 15px; color: var(--accent-orange);"></i>
+              <span>Official Recruitment Portal • MITS Gwalior</span>
+            </div>
+
+            <h2 class="join-headline">YOUR IDEAS BELONG HERE.</h2>
+            <p class="join-subtext">
+              2D Animators, Blender 3D artists, Sound Designers, DaVinci Colorists, and Graphic Designers — apply to become part of our core creative crew.
+            </p>
+
+            <div class="join-actions-row">
+              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="btn-studio btn-orange-studio magnetic-target" id="joinRecruitmentBtn" style="font-size: 1.1rem; padding: 1.1rem 2.4rem;">
+                <span>Join / Recruitment Form</span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-studio btn-outline-studio social-link-instagram magnetic-target" style="color: #fff; border-color: rgba(255,255,255,0.4); font-size: 1.1rem; padding: 1.1rem 2.2rem;">
+                <i data-lucide="instagram"></i>
+                <span>Follow on Instagram</span>
+              </a>
+            </div>
+
+            <div class="recruitment-status-notice" id="recruitmentStatusNotice"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Direct Contact & Validated Inquiry Form -->
+    <section class="contact-section">
+      <div class="site-container">
+        <div class="contact-grid">
+          
+          <!-- Contact Details -->
+          <div class="contact-card-box reveal">
+            <div class="section-label">STUDIO HEADQUARTERS</div>
+            <h2 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 1rem;">Let's Build Cinema.</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">
+              Drop by our campus studio sessions or send an official query directly to the student leadership team.
+            </p>
+
+            <div class="contact-info-list">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div>
+                  <strong style="font-family: var(--font-display); font-size: 1.05rem;">Campus Location</strong>
+                  <p style="font-size: 0.95rem; margin-top: 0.2rem;">Madhav Institute of Technology &amp; Science (MITS), Racecourse Road, Gwalior, MP - 474005</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="mail"></i>
+                </div>
+                <div>
+                  <strong style="font-family: var(--font-display); font-size: 1.05rem;">Official Club Email</strong>
+                  <p style="font-size: 0.95rem; margin-top: 0.2rem;"><a href="mailto:animationclub@mitsgwalior.in" class="social-link-email" style="text-decoration: underline; color: var(--accent-purple); font-weight: 700;">animationclub@mitsgwalior.in</a></p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="instagram"></i>
+                </div>
+                <div>
+                  <strong style="font-family: var(--font-display); font-size: 1.05rem;">Instagram Community</strong>
+                  <p style="font-size: 0.95rem; margin-top: 0.2rem;">Follow <a href="https://instagram.com" class="social-link-instagram" target="_blank" rel="noopener" style="color: var(--accent-orange); font-weight: 700;">@animationclub_mits</a> for daily reels &amp; challenge alerts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Box -->
+          <div class="contact-form-box reveal">
+            <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">Send a Direct Message</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.75rem;">
+              Direct inquiry dispatch. Validated input connects directly with club leads.
+            </p>
+
+            <form id="clubContactForm" novalidate>
+              <div class="form-group">
+                <label for="contactName" class="form-label">Your Full Name *</label>
+                <input type="text" id="contactName" class="form-control-studio" placeholder="e.g. Alex Sharma" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address *</label>
+                <input type="email" id="contactEmail" class="form-control-studio" placeholder="e.g. alex@mitsgwalior.in" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactDomain" class="form-label">Domain of Interest / Topic</label>
+                <select id="contactDomain" class="form-control-studio">
+                  <option value="General Query">General Query</option>
+                  <option value="2D Animation">2D Animation</option>
+                  <option value="3D Animation / Blender">3D Animation / Blender</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Motion Graphics">Motion Graphics</option>
+                  <option value="Event Sponsorship / Collaboration">Event Sponsorship / Collaboration</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Your Message *</label>
+                <textarea id="contactMessage" class="form-control-studio" rows="4" placeholder="Tell us how we can help or what you'd like to collaborate on..." required></textarea>
+              </div>
+
+              <div id="formStatusMessage" style="margin-bottom: 1.25rem; font-size: 0.9rem;"></div>
+
+              <button type="submit" class="btn-studio btn-primary-studio magnetic-target" style="width: 100%;">
+                <span>Send Query to Animation Club</span>
+                <i data-lucide="send"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="studio-footer">
+    <div class="site-container">
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Animation Club, Madhav Institute of Technology &amp; Science (MITS), Gwalior.
+        </div>
+        <button class="back-to-top-btn magnetic-target" id="backToTopBtn">
+          <span>Back to Top</span>
+          <i data-lucide="arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+
